@@ -55,8 +55,30 @@ public class MainClass {
 				}
 				break;
 			case 4:
+				//데이터 삭제
+				System.out.println("삭제할 아이디 입력: ");
+				id = scan.next();
+				result = db.deleteData(id);
+				if(result == 1) {
+					System.out.println("삭제 성공");
+				}else {
+					System.out.println("삭제실패 (아이디가  존재 하지않습니다.)");
+				}
 				break;
 			case 5:
+				//데이터 수정
+				System.out.println("수정할 아이디 입력: ");
+				id = scan.next();
+				System.out.println("변경할 이름: ");
+				name = scan.next();
+				System.out.println("변경할 나이 : ");
+				age = scan.nextInt();
+				result = db.updateData(id,name,age);
+				if(result == 1) {
+					System.out.println("수정 성공");
+				}else {
+					System.out.println("수정실패 (아이디가  존재 하지않습니다.)");
+				}
 				break;
 
 			}

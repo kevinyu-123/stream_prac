@@ -58,6 +58,8 @@ public class DBClass {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				StuDTO dto = new StuDTO();
+				
+				//get~ 을 쓸떄는 데이터베이스에 저장된 변수이름을 가져옴
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
 				dto.setAge(rs.getInt("age"));
@@ -97,17 +99,49 @@ public class DBClass {
 			//select 쿼리문을 전송할때 사용 = executeQuery();
 			//ResultSet rs = ps.executeQuery();
 			
-			//select를 제외한 쿼리문은 executeUpdate()사용, return 값을 돌려줌.
+			//select를 제외한 쿼리문은 executeUpdate()사용, int형으로 return 값을 돌려줌.
 			result = ps.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 	
-	
-	
+	public int deleteData(String id3) {
+		int result = 0;
+		// String sql = "DELETE FROM newst WHERE id =?";
+		String sql = "DELETE FROM newst WHERE id='" + id3 + "'";
+		try {
+			Connection con = DriverManager.getConnection(url, id, pwd);
+			PreparedStatement ps = con.prepareStatement(sql);
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public int updateData(String userId,String newName,int newAge) {
+		int result = 0;
+		String sql = "UPDATE newst SET name=?,age=? where id =?";
+		try {
+			Connection con = DriverManager.getConnection(url, id, pwd);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, newName);
+			ps.setInt(2, newAge);
+			ps.setString(3, userId);
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 	
