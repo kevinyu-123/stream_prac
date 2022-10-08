@@ -1,4 +1,4 @@
-package day20;
+package practiceFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;

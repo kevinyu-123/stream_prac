@@ -1,4 +1,4 @@
-package day20;
+package practiceFile;
 
 import java.util.Comparator;
 import java.util.List;
@@ -35,7 +35,7 @@ public class StreamPrac {
         Map<Gender, List<Person>> groupByGender = people.stream()
             .collect(Collectors.groupingBy(Person::getGender));
 
-    groupByGender.forEach((gender, people1) -> {
+        groupByGender.forEach((gender, people1) -> {
         System.out.println(gender);
         people1.forEach(System.out::println);
         System.out.println();
@@ -47,10 +47,7 @@ public class StreamPrac {
 
     List<Integer> ages = people.stream().map(age -> age.getAge()).collect(Collectors.toList());
 
-
-
     }
-
 
     private static List<Person> getPeople() {
         return List.of(
