@@ -6,7 +6,9 @@ import java.util.Base64;
 
 public class HashPractice {
     public static void main(String[] args) {
-        
+        /*
+         * String -> byte 변경 필요
+         */
         String key = "hashtest";
 
         //To SHA512
