@@ -3,6 +3,7 @@ package practiceFile;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.Base64;
+import java.util.Random;
 
 public class HashPractice {
     public static void main(String[] args) {
@@ -31,6 +32,11 @@ public class HashPractice {
 
         //add randStr
         String addedCode = encodedToBase64 + "." + "12323";
+        
+        //better use Stringbuffer
+        StringBuffer sb = new StringBuffer(addedCode);
+        sb.append(rand());
+
 
         System.out.println("================================================");
         System.out.println("addedCode:");
@@ -67,5 +73,20 @@ public class HashPractice {
 		
 		return null;
      }
+
+     private static String rand() {
+        Random ran = new Random();
+        String str = "";
+        int num;
+        while (str.length() != 20) {
+            num = ran.nextInt(75) + 48;
+            if ((num >= 48 && num <= 57) || (num >= 65 && num <= 90) || (num >= 97 && num <= 122)) {
+                str += (char) num;
+            } else {
+                continue;
+            }
+        }
+        return str;
+    }
 
 }
