@@ -1,24 +1,27 @@
 package practiceFile;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class StreamPrac {
     public static void main(String[] args) {
 
         List<Person> people = getPeople();
 
-        List<Person> person2 = new ArrayList<>();
+        List<Person> peo = new ArrayList<Person>(people);
+        List<Person> peo2 = new ArrayList<Person>();
 
-        people.forEach(s -> {
-            
-        });
+        Collections.copy(peo, people);
+        peo2.addAll(peo);
+
+        System.out.println("peo :" + peo.toString());
+        System.out.println("peo2 :" + peo2.toString());
 
         int sum = people.stream().mapToInt(s -> s.getAge()).sum();
 
@@ -70,6 +73,8 @@ public class StreamPrac {
         );
       }
 
+
+      
 
       
 }
