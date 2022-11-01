@@ -1,5 +1,6 @@
 package practiceFile;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +14,19 @@ public class StreamPrac {
 
         List<Person> people = getPeople();
 
+        List<Person> person2 = new ArrayList<>();
+
+        people.forEach(s -> {
+            
+        });
+
         int sum = people.stream().mapToInt(s -> s.getAge()).sum();
 
         System.out.println(sum);
 
         OptionalDouble avg = people.stream().mapToInt(s -> s.getAge()).average();
+
+        
 
         int c = (int) people.stream().count();
 
